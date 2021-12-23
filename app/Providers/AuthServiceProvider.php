@@ -29,5 +29,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return $user->name === 'bpn';
         });
+
+        Gate::define('pengukur', function (User $user) {
+            return $user->status === 'pengukur';
+        });
+
+        Gate::define('loket', function (User $user) {
+            return $user->status === 'loket';
+        });
     }
 }

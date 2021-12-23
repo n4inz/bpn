@@ -34,9 +34,17 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         if(Gate::allows('admin')){
             return redirect()->intended(RouteServiceProvider::ADMIN);
-        }else{
+        }
+
+        if(Gate::allows('loket')){
             return redirect()->intended(RouteServiceProvider::HOME);
         }
+
+        if(Gate::allows('pengukur')){
+            return redirect()->intended(RouteServiceProvider::PENGUKUR);
+        }
+
+       
 
     }
 

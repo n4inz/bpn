@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataPengukurController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,12 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/data', [DataController::class , 'index'])->middleware(['auth'])->name('data');
+Route::get('/data/pengukur', [DataPengukurController::class , 'index'])->middleware(['auth'])->name('datapengukur');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
