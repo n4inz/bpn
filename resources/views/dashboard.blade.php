@@ -158,9 +158,10 @@
                 </div> -->
               <div class="card">
                 <div class="card-body">
-                  <form class="form-sample">
+                  <form method="POST" action="/submitPemohon" class="form-sample">
+                    @csrf
                     <p class="card-description text-danger">
-                      Tanda Terima Pemohin
+                      Tanda Terima Pemohon
                     </p>
                     <hr class="text-danger">
                     <div class="row">
@@ -168,7 +169,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Nama Pemohon</label>
                           <div class="col-sm-9">
-                            <input type="text" name="namePemohon" class="form-control" />
+                            <input type="text" name="namaPemohon" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -176,7 +177,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Alamat</label>
                           <div class="col-sm-9">
-                            <input type="text" name="alamat" class="form-control" />
+                            <input type="text" name="alamat" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -186,7 +187,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Desa/Kelurahan</label>
                           <div class="col-sm-9">
-                            <input type="text" name="desaKelurahan" class="form-control" />
+                            <input type="text" name="desaKelurahan" class="form-control" autocomplete="off"/>
                           </div>
                         </div>
                       </div>
@@ -194,7 +195,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Kecamatan</label>
                           <div class="col-sm-9">
-                            <input class="form-control" name="kecamatan" class="form-control"/>
+                            <input class="form-control" name="kecamatan" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -204,7 +205,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Kegiatan</label>
                           <div class="col-sm-9">
-                            <input class="form-control" name="kegiatan" class="form-control"/>
+                            <input class="form-control" name="kegiatan" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -218,7 +219,7 @@
                         <div class="form-group row">
                           <label class="col-sm-5 col-form-label">Sertipikat Hak Atas Tanah</label>
                           <div class="col-sm-7">
-                            <input type="text" name="sertifikatHakAtasTanah" class="form-control" />
+                            <input type="text" name="sertifikatHakAtasTanah" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -226,7 +227,7 @@
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Dokumen Pengukuran</label>
                           <div class="col-sm-8">
-                            <input type="text" name="dokumenPengukuran" class="form-control" />
+                            <input type="text" name="dokumenPengukuran" class="form-control" autocomplete="off"  />
                           </div>
                         </div>
                       </div>
@@ -236,7 +237,7 @@
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Fotocopy KTP / KK</label>
                           <div class="col-sm-8">
-                            <input type="text" name="fotocopyKtpKk" class="form-control" />
+                            <input type="text" name="fotoCopyKtpKK" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -244,7 +245,7 @@
                         <div class="form-group row">
                           <label class="col-sm-6 col-form-label">Fotocopy KTP / Identitas Pemilik Hak</label>
                           <div class="col-sm-6">
-                            <input type="text" name="fotocopyKTPIdentitasPemilikHak" class="form-control" />
+                            <input type="text" name="fotoCopyKtpIdentitasPemilikHak" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -254,7 +255,7 @@
                         <div class="form-group row">
                           <label class="col-sm-5 col-form-label">Surat Kuasa Permohonan</label>
                           <div class="col-sm-7">
-                            <input type="text" name="SuratKuasaPermohonan" class="form-control" />
+                            <input type="text" name="suratKuasaPermohonan" class="form-control" autocomplete="off"  />
                           </div>
                         </div>
                       </div>
@@ -262,7 +263,7 @@
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Surat Permohonan</label>
                           <div class="col-sm-8">
-                            <input type="text" name="suratPemohon" class="form-control" />
+                            <input type="text" name="suratPermohonan" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -272,7 +273,7 @@
                         <div class="form-group row">
                           <label class="col-sm-6 col-form-label">Fotocopy Pajak Bumi dan Bangunan</label>
                           <div class="col-sm-6">
-                            <input type="text" name="FotocopyPajakBumiDanBangunan" class="form-control" />
+                            <input type="text" name="fotoCopyPajakBumiBangunan" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -280,14 +281,22 @@
                         <div class="form-group row">
                           <label class="col-sm-5 col-form-label">Detil Permohonan Pengukuran</label>
                           <div class="col-sm-7">
-                            <input type="text" name="DetilPermohonanPengukuran" class="form-control" />
+                            <input type="text" name="detailPermohonanPengukuran" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
+
+                      <input type="submit" class="btn btn-success" value="submit">
                     </div>
                   </form>
                 </div>
               </div>
+
+              <!-- <form method="POST" action="/submitPemohon">
+                @csrf
+                <input type="text" name="namaPemohon">
+                <input type="submit" value="kirim">
+              </form> -->
             </div>
           </div>
         </div>
