@@ -10,8 +10,7 @@ use App\Http\Controllers\Controller;
 class DataPemohonController extends Controller
 {
     public function post(Request $request){
-
-        
+       
         // $request->validate([
         //     'namepemohon' => ['required'],
         // ]);
@@ -37,6 +36,10 @@ class DataPemohonController extends Controller
         ]);
 
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success','Data berhasil di tambahkan');
+    }
+
+    public function hapus(Request $request){
+        return $request;
     }
 }

@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::post('/submitPemohon', [DataPemohonController::class, 'post']);
+Route::post('/hapus/{post: slug}', [DataPemohonController::class, 'hapus']);
 Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/data', [DataController::class , 'index'])->middleware(['auth'])->name('data');
 Route::get('/data/pengukur', [DataPengukurController::class , 'index'])->middleware(['auth'])->name('datapengukur');

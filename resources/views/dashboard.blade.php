@@ -157,7 +157,9 @@
                   </div>
                 </div> -->
               <div class="card">
+
                 <div class="card-body">
+
                   <form method="POST" action="/submitPemohon" class="form-sample">
                     @csrf
                     <p class="card-description text-danger">
