@@ -86,7 +86,7 @@
             </div>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="/data" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link" href="/data">
               <i class="menu-icon mdi mdi-table"></i>
               <span class="menu-title">Data</span>
             </a>
@@ -156,79 +156,149 @@
                     </div>
                   </div>
                 </div> -->
-                <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive pt-3">
-                                <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                    <th>
-                                        No
-                                    </th>
-                                    <th>
-                                        Nama Pemohon
-                                    </th>
-                                    <th>
-                                        Alamat
-                                    </th>
-                                    <th>
-                                        Desa / Kelurahan
-                                    </th>
-                                    <th>
-                                        Kecamatan
-                                    </th>
-                                    <th>
-                                        Aksi
-                                    </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach ($data as $datas)
-                                 
-                                    <tr>
-                                      <td>
-                                          {{$loop->iteration}}
-                                      </td>
-                                      <td>
-                                          {{$datas->namaPemohon}}
-                                      </td>
-                                      <td>
-                                          {{$datas->alamat}}
-                                      </td>
-                                      <td>
-                                          {{$datas->desaKelurahan}}
-                                      </td>
-                                      <td>
-                                          {{$datas->kecamatan}}
-                                      </td>
-                                      <td>
-                                        
-                                          <div class="d-flex">
-                                            <form action="/hapus/{{$datas->id}}" method="get">
-                                                
-                                                <input type="submit" value="Hapus">
-                                            </form>
-                                            <form action="/edit/{{$datas->id}}" method="get">
-                                                <input type="submit" value="Edit">
-                                            </form>
-                                          </div>
-                                       
-                                      </td>
-                                    </tr>
-                                  @endforeach
-                                </tbody>
-                                </table>
-                            </div>
-                            <div class="d-flex justify-content-center mt-4">
-                              {{ $data->links() }}
-                            </div>
-                            
+              <div class="card">
+
+                <div class="card-body">
+
+                  <form method="POST" action="/editPemohon/{{$data->id}}" class="form-sample">
+                    @csrf
+                    <p class="card-description text-danger">
+                      Tanda Terima Pemohon
+                    </p>
+                    <hr class="text-danger">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Nama Pemohon</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="namaPemohon" class="form-control" autocomplete="off" value="{{$data->namaPemohon}}" />
+                          </div>
                         </div>
-
-
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Alamat</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="alamat" class="form-control" autocomplete="off" value="{{$data->alamat}}" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-            </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Desa/Kelurahan</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="desaKelurahan" class="form-control" autocomplete="off" value="{{$data->desaKelurahan}}"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Kecamatan</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" name="kecamatan" class="form-control" autocomplete="off" value="{{$data->kecamatan}}"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Kegiatan</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" name="kegiatan" class="form-control" autocomplete="off" value="{{$data->kegiatan}}"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="card-description text-danger">
+                      Dokumen Terlampir
+                    </p>
+                    <hr class="text-danger">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label">Sertipikat Hak Atas Tanah</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="sertifikatHakAtasTanah" class="form-control" autocomplete="off" value="{{$data->sertifikatHakAtasTanah}}"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Dokumen Pengukuran</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="dokumenPengukuran" class="form-control" autocomplete="off" value="{{$data->dokumenPengukuran}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Fotocopy KTP / KK</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="fotoCopyKtpKK" class="form-control" autocomplete="off" value="{{$data->fotoCopyKtpKK}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label">Fotocopy KTP / Identitas Pemilik Hak</label>
+                          <div class="col-sm-6">
+                            <input type="text" name="fotoCopyKtpIdentitasPemilikHak" class="form-control" autocomplete="off" value="{{$data->fotoCopyKtpIdentitasPemilikHak}}"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label">Surat Kuasa Permohonan</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="suratKuasaPermohonan" class="form-control" autocomplete="off" value="{{$data->suratKuasaPermohonan}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Surat Permohonan</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="suratPermohonan" class="form-control" autocomplete="off" value="{{$data->suratPermohonan}}"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label">Fotocopy Pajak Bumi dan Bangunan</label>
+                          <div class="col-sm-6">
+                            <input type="text" name="fotoCopyPajakBumiBangunan" class="form-control" autocomplete="off" value="{{$data->fotoCopyPajakBumiBangunan}}"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label">Detil Permohonan Pengukuran</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="detailPermohonanPengukuran" class="form-control" autocomplete="off" value="{{$data->detailPermohonanPengukuran}}"/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <input type="submit" class="btn btn-success" value="edit">
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- <form method="POST" action="/submitPemohon">
+                @csrf
+                <input type="text" name="namaPemohon">
+                <input type="submit" value="kirim">
+              </form> -->
             </div>
           </div>
         </div>

@@ -16,9 +16,11 @@
 
 
         <ul class="navbar-nav">
-        @if(session()->has('success'))
+        @if(session()->has('success') OR session()->has('delete') OR session()->has('update'))
           <div class="alert alert-success d-flex align-items-center" role="alert">
              <div> {{ session('success') }}</div>
+             <div> {{ session('delete') }}</div>
+             <div> {{ session('update') }}</div>
           </div>
         @endif
         </ul>

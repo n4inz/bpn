@@ -39,7 +39,36 @@ class DataPemohonController extends Controller
         return redirect('/dashboard')->with('success','Data berhasil di tambahkan');
     }
 
-    public function hapus(Request $request){
-        return $request;
+    public function hapus($id){
+
+        Data_pemohon::destroy($id);
+        return redirect('/data')->with('delete','Data berhasil di hapus');
+    }
+
+
+    public function edit($id){
+       $data =  Data_pemohon::find($id);
+    //    return compact('data',$data);
+        return view('/edit', compact('data',$data));
+    }
+
+    public function edits(Request $request , $id){
+        Data_pemohon::where('id', $id)
+        ->update([
+            "namaPemohon" => $request->namaPemohon,
+            "alamat" => $request->alamat,
+            "desaKelurahan" => $request->desaKelurahan,
+            "kecamatan" => $request->kecamatan,
+            "kegiatan" => $request->kegiatan,
+            "sertifikatHakAtasTanah" => $request->sertifikatHakAtasTanah,
+            "dokumenPengukuran" => $request->dokumenPengukuran,
+            "fotoCopyKtpKK" => $request->fotoCopyKtpKK,
+            "fotoCopyKtpIdentitasPemilikHak" => $request->fotoCopyKtpIdentitasPemilikHak,
+            "suratKuasaPermohonan" => $request->suratKuasaPermohonan,
+            "suratPermohonan" => $request->suratPermohonan,
+            "fotoCopyPajakBumiBangunan" => $request->fotoCopyPajakBumiBangunan,
+            "detailPermohonanPengukuran" => $request->detailPermohonanPengukuran,
+         ]);
+        return redirect('/data')->with('update','Data berhasil di update');
     }
 }
